@@ -1,0 +1,37 @@
+CHANGELOG
+=========
+
+[0.1.0] - 2026-06-29
+---------------------
+Cross-environment compatibility pass.
+
+- TypeScript build config now uses lib: ES2020 + DOM, no ambient Bun types in
+  emitted declarations. Published types are self-contained and work in any TS
+  project regardless of runtime.
+- Test suite now runs in both Node and a browser-like environment (happy-dom)
+  to verify behaviour is identical across runtimes.
+- Version bumped from 0.0.1 to 0.1.0.
+
+[0.0.1] - 2026-06-29
+---------------------
+Initial release.
+
+String utilities (src/String):
+  - capitalize      Capitalize the first letter of a string.
+  - toCamelCase     Convert a string to camelCase.
+  - toSnakeCase     Convert a string to snake_case.
+  - toTitleCase     Convert a string to Title Case.
+  - truncate        Shorten a string to a maximum length.
+  - ellipsify       Shorten a string and append "..." when truncated.
+  - slugify         Convert a string to a URL-friendly slug.
+  - isEmail         Validate an email address format.
+  - isURL           Validate an HTTP/HTTPS URL.
+  - isPhoneNumber   Validate a phone number (E.164 and common formats).
+
+Number utilities (src/Number):
+  - clamp           Restrict a number to a [min, max] range.
+  - randomInt       Generate a random integer within a [min, max] range.
+  - sum             Sum an array of numbers.
+  - average         Average an array of numbers.
+  - isEven          Check whether an integer is even.
+  - isOdd           Check whether an integer is odd.

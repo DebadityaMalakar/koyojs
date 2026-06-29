@@ -1,0 +1,17 @@
+# tests
+test/
+scripts/
+
+node_modules/
+
+# Config
+tsconfig.json
+tsconfig.build.json
+vitest.config.ts
+.gitignore
+
+# Misc
+*.log
+*.map
+CHANGELOG.txt
+
