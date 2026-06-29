@@ -93,6 +93,20 @@ One file, one function. Every module lives under `src/<Category>/<functionName>.
 
 ---
 
+## Source
+
+The repository is mirrored on two platforms — clone from whichever you prefer:
+
+```bash
+# GitHub
+git clone https://github.com/DebadityaMalakar/koyojs.git
+
+# Codeberg
+git clone https://codeberg.org/debaditya/koyojs.git
+```
+
+---
+
 ## License
 
 MIT
