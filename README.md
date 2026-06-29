@@ -1,6 +1,6 @@
 # Koyo JS
 
-**Koyo** (肝要, Japanese: *essential*) — a zero-dependency utility library for TypeScript and JavaScript. `v0.1.0`
+**Koyo** (肝要, Japanese: *essential*) — a zero-dependency utility library for TypeScript and JavaScript. `v0.1.1`
 
 Ships as ESM, CJS, and a native Bun build. Fully typed. Works the same in Node, Bun, browsers, and edge runtimes.
 
@@ -56,7 +56,7 @@ import { randomInt }   from "koyojs/Number";
 | `toSnakeCase` | `(input: string) => string` | `"helloWorld"` → `"hello_world"` |
 | `toTitleCase` | `(input: string) => string` | `"hello world"` → `"Hello World"` |
 | `truncate` | `(input: string, maxLength: number) => string` | Cut string to `maxLength`. |
-| `ellipsify` | `(input: string, maxLength: number) => string` | Cut string and append `"..."`. |
+| `ellipsify` | `(input: string, maxLength: number) => string` | Truncate to `maxLength` total (including the `"..."`). e.g. `ellipsify("Hello World", 5)` → `"He..."` |
 | `slugify` | `(input: string) => string` | `"Hello World!"` → `"hello-world"` |
 | `isEmail` | `(input: string) => boolean` | Validate an email address. |
 | `isURL` | `(input: string) => boolean` | Validate an HTTP/HTTPS URL. |

@@ -1,7 +1,13 @@
 import * as esbuild from "esbuild";
 
+const entryPoints = [
+  "src/index.ts",
+  "src/String/index.ts",
+  "src/Number/index.ts",
+];
+
 const shared: esbuild.BuildOptions = {
-  entryPoints: ["src/index.ts"],
+  entryPoints,
   bundle: true,
   platform: "neutral",
   target: ["es2020"],
@@ -13,12 +19,14 @@ await Promise.all([
   esbuild.build({
     ...shared,
     format: "esm",
-    outfile: "dist/index.mjs",
+    outdir: "dist",
+    outExtension: { ".js": ".mjs" },
   }),
   esbuild.build({
     ...shared,
     format: "cjs",
-    outfile: "dist/index.cjs",
+    outdir: "dist",
+    outExtension: { ".js": ".cjs" },
   }),
 ]);
 

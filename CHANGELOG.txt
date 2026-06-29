@@ -1,6 +1,18 @@
 CHANGELOG
 =========
 
+[0.1.1] - 2026-06-29
+---------------------
+Bug fixes.
+
+- fix: subpath imports now work — "koyojs/String" and "koyojs/Number" are
+  properly declared in package.json exports with separate ESM (.mjs) and CJS
+  (.cjs) bundles emitted for each. Previously only the root "." entry existed,
+  causing ERR_PACKAGE_PATH_NOT_EXPORTED at runtime.
+- fix: ellipsify README description corrected — maxLength is the cap on total
+  output length including the "...", not the cap before appending it.
+  ellipsify("Hello World", 5) → "He...", not "Hello...".
+
 [0.1.0] - 2026-06-29
 ---------------------
 Cross-environment compatibility pass.
