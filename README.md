@@ -6,7 +6,7 @@
 
 > ⚠️ APIs are stable but may still evolve before 1.0.0.
 
-**Koyo** (肝要, Japanese: *essential*) — a zero-dependency utility library for TypeScript and JavaScript. `v0.2.1`
+**Koyo** (肝要, Japanese: *essential*) — a zero-dependency utility library for TypeScript and JavaScript. `v0.2.2`
 
 Ships as ESM, CJS, and a native Bun build. Fully typed. Works the same in Node, Bun, browsers, and edge runtimes.
 
@@ -85,9 +85,12 @@ import { pick }        from "koyojs/Object";
 
 | Function | Signature | Description |
 |---|---|---|
-| `pick` | `<T, K extends keyof T>(obj: T, keys: K[]) => Pick<T, K>` | Return a new object with only the selected keys. |
-| `omit` | `<T, K extends keyof T>(obj: T, keys: K[]) => Omit<T, K>` | Return a new object with the specified keys removed. |
-| `cloneDeep` | `<T>(value: T) => T` | Return a fully independent deep copy (via `structuredClone`). |
+| `pick` | `<T, K extends keyof T>(obj: T, keys: K[]) => Pick<T, K>` | Return a new object with only the selected top-level keys. |
+| `omit` | `<T, K extends keyof T>(obj: T, keys: K[]) => Omit<T, K>` | Return a new object with the specified top-level keys removed. |
+| `extract` | `<T extends object>(obj: T, paths: string[]) => Record<string, unknown>` | Like `pick`, but resolves dot-notation nested paths. e.g. `extract(obj, ['a.b.c'])` |
+| `exclude` | `<T extends object>(obj: T, paths: string[]) => Record<string, unknown>` | Like `omit`, but resolves dot-notation nested paths. e.g. `exclude(obj, ['a.b.c'])` |
+| `cloneDeep` | `<T>(value: T) => T` | Deep copy that preserves prototypes, Maps, Sets, getters/setters, and handles circular references. |
+| `cloneShallow` | `<T>(value: T) => T` | Deep copy via `structuredClone`. Fast, but throws on non-serializable values and drops prototypes. |
 
 ### Number
 

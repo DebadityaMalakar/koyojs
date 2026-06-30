@@ -127,23 +127,35 @@ group("groupBy (200 items, 5 groups)", () => {
   bench("radash group", () => radash.group(GROUP_ARR, (x) => x.type));
 });
 
-group("pick (20-key obj, 5 keys)", () => {
-  bench("koyojs", () => koyo.pick(OBJ, PICK_KEYS as unknown as string[]));
-  bench("lodash _.pick", () => _.pick(OBJ, PICK_KEYS));
+group("pick — top-level keys only (20-key obj, 5 keys)", () => {
+  bench("koyojs pick", () => koyo.pick(OBJ, PICK_KEYS as unknown as string[]));
   bench("remeda R.pick", () => R.pick(OBJ, PICK_KEYS));
   bench("radash pick", () => radash.pick(OBJ, PICK_KEYS as unknown as string[]));
 });
 
-group("omit (20-key obj, 5 keys)", () => {
-  bench("koyojs", () => koyo.omit(OBJ, OMIT_KEYS as unknown as string[]));
-  bench("lodash _.omit", () => _.omit(OBJ, OMIT_KEYS));
+group("extract — nested path resolution (20-key obj, 5 paths)", () => {
+  bench("koyojs extract", () => koyo.extract(OBJ, PICK_KEYS as unknown as string[]));
+  bench("lodash _.pick (path-capable)", () => _.pick(OBJ, PICK_KEYS));
+});
+
+group("omit — top-level keys only (20-key obj, 5 keys)", () => {
+  bench("koyojs omit", () => koyo.omit(OBJ, OMIT_KEYS as unknown as string[]));
   bench("remeda R.omit", () => R.omit(OBJ, OMIT_KEYS));
   bench("radash omit", () => radash.omit(OBJ, OMIT_KEYS as unknown as string[]));
 });
 
-group("cloneDeep (20-key obj)", () => {
-  bench("koyojs", () => koyo.cloneDeep(OBJ));
+group("exclude — nested path resolution (20-key obj, 5 paths)", () => {
+  bench("koyojs exclude", () => koyo.exclude(OBJ, OMIT_KEYS as unknown as string[]));
+  bench("lodash _.omit (path-capable)", () => _.omit(OBJ, OMIT_KEYS));
+});
+
+group("cloneDeep — prototype-preserving recursive walk (20-key obj)", () => {
+  bench("koyojs cloneDeep", () => koyo.cloneDeep(OBJ));
   bench("lodash _.cloneDeep", () => _.cloneDeep(OBJ));
+});
+
+group("cloneShallow — structuredClone wrapper (20-key obj)", () => {
+  bench("koyojs cloneShallow", () => koyo.cloneShallow(OBJ));
   bench("remeda R.clone", () => R.clone(OBJ));
   bench("structuredClone (baseline)", () => structuredClone(OBJ));
 });

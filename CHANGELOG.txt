@@ -1,6 +1,31 @@
 CHANGELOG
 =========
 
+[0.2.2] - 2026-06-30
+---------------------
+Object utilities expanded — honest cloning split, nested-path pick/omit.
+
+New functions (src/Object):
+  - cloneShallow    Wraps structuredClone. Fast, but throws on non-serializable
+                    values (functions, symbols) and drops prototypes on class
+                    instances. Renamed from the old cloneDeep.
+  - cloneDeep       Rewritten as a proper recursive walk. Preserves prototypes
+                    (instanceof stays intact), clones Map and Set, handles
+                    circular references via WeakMap, and keeps getters/setters
+                    as descriptors instead of flattening them to values.
+  - extract         Like pick, but resolves dot-notation nested paths.
+                    extract(obj, ['a.b.c']) returns { a: { b: { c: value } } }.
+  - exclude         Like omit, but resolves dot-notation nested paths.
+                    exclude(obj, ['a.b.c']) removes the leaf, leaving siblings
+                    and the parent key intact.
+
+Benchmark fixes:
+  - pick/omit now only compare against libraries doing the same operation
+    (top-level keys). lodash is moved to the extract/exclude groups where the
+    path-capable comparison is actually apples-to-apples.
+  - cloneDeep and cloneShallow are in separate benchmark groups so the chart
+    stops conflating the two different feature sets.
+
 [0.2.1] - 2026-06-30
 ---------------------
 Performance — speed regressions fixed, benchmark suite added.
