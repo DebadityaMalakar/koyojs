@@ -6,7 +6,7 @@
 
 > ⚠️ APIs are stable but may still evolve before 1.0.0.
 
-**Koyo** (肝要, Japanese: *essential*) — a zero-dependency utility library for TypeScript and JavaScript. `v0.2.0`
+**Koyo** (肝要, Japanese: *essential*) — a zero-dependency utility library for TypeScript and JavaScript. `v0.2.1`
 
 Ships as ESM, CJS, and a native Bun build. Fully typed. Works the same in Node, Bun, browsers, and edge runtimes.
 
@@ -111,6 +111,17 @@ bun run test      # run all tests
 bun run check     # type-check without emitting
 bun run dev       # watch mode
 ```
+
+### Benchmarks
+
+```bash
+bun run benchmark:node     # Node  — imports from dist/
+bun run benchmark:bun      # Bun   — imports from src/ (native TS)
+bun run benchmark:browser  # Node  — dist/ + happy-dom browser globals
+bun run benchmark:all      # all three in sequence
+```
+
+Compares koyojs against lodash, remeda, and radash. Requires `bun run build` before running the Node or browser targets.
 
 ---
 

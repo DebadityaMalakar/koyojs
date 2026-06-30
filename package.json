@@ -1,6 +1,6 @@
 {
   "name": "koyojs",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Koyo JS — essential utilities",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -47,13 +47,22 @@
     "check": "tsc --noEmit",
     "clean": "rm -rf dist",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "benchmark:node": "node benchmark/node.mjs",
+    "benchmark:bun": "bun benchmark/bun.ts",
+    "benchmark:browser": "node benchmark/browser.mjs",
+    "benchmark:all": "bun run benchmark:browser && bun run benchmark:node && bun run benchmark:bun"
   },
   "devDependencies": {
     "@types/bun": "latest",
+    "@types/lodash": "^4.17.24",
     "@types/node": "^26.0.1",
     "esbuild": "^0.28.1",
     "happy-dom": "^20.10.6",
+    "lodash": "^4.18.1",
+    "mitata": "^1.0.34",
+    "radash": "^12.1.1",
+    "remeda": "^2.39.0",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"
   }

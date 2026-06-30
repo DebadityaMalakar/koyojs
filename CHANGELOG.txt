@@ -1,6 +1,27 @@
 CHANGELOG
 =========
 
+[0.2.1] - 2026-06-30
+---------------------
+Performance — speed regressions fixed, benchmark suite added.
+
+Performance fixes:
+  - toTitleCase     Rewrote from String.replace(regex, callback) to a single-
+                    pass charCodeAt loop tracking word-boundary state. Eliminates
+                    a closure allocation per word match. ~2x faster on short
+                    strings, measurably faster on long strings.
+  - chunk           Rewrote from slice()+push() to preallocated outer and inner
+                    arrays with a manual element-copy loop. Both array sizes
+                    computed upfront via Math.ceil; no repeated reallocation.
+                    ~28% faster at all tested sizes.
+
+Benchmark suite (benchmark/):
+  - benchmark:node     node benchmark/node.mjs   — imports from dist/
+  - benchmark:bun      bun  benchmark/bun.ts     — imports from src/ (native TS)
+  - benchmark:browser  node benchmark/browser.mjs — dist/ + happy-dom globals
+  - benchmark:all      runs browser → node → bun in sequence
+  Compares koyojs against lodash, remeda, and radash across all functions.
+
 [0.2.0] - 2026-06-30
 ---------------------
 Array and Object utilities.
