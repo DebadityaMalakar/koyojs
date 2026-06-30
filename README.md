@@ -1,6 +1,12 @@
 # Koyo JS
 
-**Koyo** (肝要, Japanese: *essential*) — a zero-dependency utility library for TypeScript and JavaScript. `v0.1.1`
+[![npm](https://img.shields.io/npm/v/koyojs)](https://www.npmjs.com/package/koyojs)
+[![node](https://img.shields.io/node/v/koyojs)](https://nodejs.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+> ⚠️ APIs are stable but may still evolve before 1.0.0.
+
+**Koyo** (肝要, Japanese: *essential*) — a zero-dependency utility library for TypeScript and JavaScript. `v0.2.0`
 
 Ships as ESM, CJS, and a native Bun build. Fully typed. Works the same in Node, Bun, browsers, and edge runtimes.
 
@@ -41,6 +47,8 @@ You can also import from a specific module:
 ```ts
 import { toCamelCase } from "koyojs/String";
 import { randomInt }   from "koyojs/Number";
+import { chunk }       from "koyojs/Array";
+import { pick }        from "koyojs/Object";
 ```
 
 ---
@@ -61,6 +69,25 @@ import { randomInt }   from "koyojs/Number";
 | `isEmail` | `(input: string) => boolean` | Validate an email address. |
 | `isURL` | `(input: string) => boolean` | Validate an HTTP/HTTPS URL. |
 | `isPhoneNumber` | `(input: string) => boolean` | Validate a phone number (E.164 + common formats). |
+
+### Array
+
+| Function | Signature | Description |
+|---|---|---|
+| `createArray` | `<T>(options: { strict, validate? }) => TypedArray<T>` | Typed array that enforces element type. `strict: true` throws, `strict: false` warns. |
+| `unique` | `<T>(arr: T[]) => T[]` | Remove duplicate items. |
+| `removeDuplicates` | `<T>(arr: T[]) => T[]` | Alias for `unique`. |
+| `flatten` | `<T>(arr: unknown[]) => T[]` | Recursively flatten a nested array. e.g. `[1,[2,[3]]]` → `[1,2,3]` |
+| `chunk` | `<T>(arr: T[], size: number) => T[][]` | Split into sub-arrays of `size`. e.g. `chunk([1,2,3,4], 2)` → `[[1,2],[3,4]]` |
+| `groupBy` | `<T>(arr: T[], keyFn: (item: T) => string) => Record<string, T[]>` | Group items by a derived key. |
+
+### Object
+
+| Function | Signature | Description |
+|---|---|---|
+| `pick` | `<T, K extends keyof T>(obj: T, keys: K[]) => Pick<T, K>` | Return a new object with only the selected keys. |
+| `omit` | `<T, K extends keyof T>(obj: T, keys: K[]) => Omit<T, K>` | Return a new object with the specified keys removed. |
+| `cloneDeep` | `<T>(value: T) => T` | Return a fully independent deep copy (via `structuredClone`). |
 
 ### Number
 

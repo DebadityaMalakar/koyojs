@@ -1,6 +1,25 @@
 CHANGELOG
 =========
 
+[0.2.0] - 2026-06-30
+---------------------
+Array and Object utilities.
+
+Array utilities (src/Array):
+  - createArray     Typed array wrapper. strict:true throws TypeError on type
+                    mismatch; strict:false emits a console.warn. Type is inferred
+                    from the first pushed element, or from a custom validate fn.
+  - unique          Remove duplicate items from an array.
+  - removeDuplicates  Alias for unique.
+  - flatten         Recursively flatten a nested array to a single level.
+  - chunk           Split an array into sub-arrays of a given size.
+  - groupBy         Group items by a key derived from a function.
+
+Object utilities (src/Object):
+  - pick            Return a new object with only the selected keys.
+  - omit            Return a new object with the specified keys removed.
+  - cloneDeep       Fully independent deep copy via structuredClone.
+
 [0.1.1] - 2026-06-29
 ---------------------
 Bug fixes.

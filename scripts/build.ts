@@ -4,6 +4,8 @@ const entryPoints = [
   "src/index.ts",
   "src/String/index.ts",
   "src/Number/index.ts",
+  "src/Array/index.ts",
+  "src/Object/index.ts",
 ];
 
 const shared: esbuild.BuildOptions = {

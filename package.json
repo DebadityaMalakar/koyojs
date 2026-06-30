@@ -1,6 +1,6 @@
 {
   "name": "koyojs",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Koyo JS — essential utilities",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -22,9 +22,23 @@
       "types": "./dist/Number/index.d.ts",
       "import": "./dist/Number/index.mjs",
       "require": "./dist/Number/index.cjs"
+    },
+    "./Array": {
+      "types": "./dist/Array/index.d.ts",
+      "import": "./dist/Array/index.mjs",
+      "require": "./dist/Array/index.cjs"
+    },
+    "./Object": {
+      "types": "./dist/Object/index.d.ts",
+      "import": "./dist/Object/index.mjs",
+      "require": "./dist/Object/index.cjs"
     }
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=17.0.0",
+    "bun": ">=1.0.0"
+  },
   "files": ["dist"],
   "scripts": {
     "build": "bun run scripts/build.ts && bun run types",
